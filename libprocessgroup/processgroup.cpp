@@ -186,7 +186,7 @@ void removeAllProcessGroups() {
     for (std::string cgroup_root_path : cgroups) {
         std::unique_ptr<DIR, decltype(&closedir)> root(opendir(cgroup_root_path.c_str()), closedir);
         if (root == NULL) {
-            PLOG(ERROR) << "Failed to open " << cgroup_root_path;
+            PLOG(VERBOSE) << "Failed to open " << cgroup_root_path;
         } else {
             dirent* dir;
             while ((dir = readdir(root.get())) != nullptr) {
